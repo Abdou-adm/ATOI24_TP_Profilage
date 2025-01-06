@@ -23,7 +23,7 @@ double cy(int y)
 	return -1.0 + y * qy;
 }
 
-int main(int argc, char *argv[])
+int main(void)
 {
 	struct ppm_image im;
 	ppm_image_init(&im, SIZEX, SIZEY);
