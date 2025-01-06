@@ -28,26 +28,21 @@ int main(int argc, char *argv[])
 	struct ppm_image im;
 	ppm_image_init(&im, SIZEX, SIZEY);
 
-	int i, j;
 	double colref = 255.0 / log(ITER);
 
-	for (i = 0; i < SIZEX; ++i) {
-		for (j = 0; j < SIZEY; ++j) {
-
-			int iter = 0;
-
+	for (int i = 0; i < SIZEX; ++i) {
+		for (int j = 0; j < SIZEY; ++j) {
 			double complex c = cx(i) + cy(j) * I;
 			double complex z = 0;
 
-			while (iter < ITER) {
+			int iter;
+			for (iter = 0; iter < ITER; ++iter) {
 				double mod = cabs(z);
 
 				if (TRSH < mod)
 					break;
 
 				z = z*z + c;
-
-				iter++;
 			}
 
 			int grey = (int)(colref * log((double)iter));
