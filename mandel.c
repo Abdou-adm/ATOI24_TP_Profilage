@@ -4,7 +4,7 @@
 #include "ppm.h"
 
 #define TRSH 2.0
-#define ITER 1024ull
+#define ITER 1024
 
 #define SIZEX 1500
 #define SIZEY 1500
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	for (i = 0; i < SIZEX; ++i) {
 		for (j = 0; j < SIZEY; ++j) {
 
-			unsigned long int iter = 0;
+			int iter = 0;
 
 			double complex c = cx(i) + cy(j) * I;
 			double complex z = 0;
