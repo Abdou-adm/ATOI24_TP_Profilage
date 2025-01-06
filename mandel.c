@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 			for (iter = 0; iter < ITER; ++iter) {
 				double mod = cabs(z);
 
-				if (TRSH < mod)
+				if (mod > TRSH)
 					break;
 
 				z = z*z + c;
