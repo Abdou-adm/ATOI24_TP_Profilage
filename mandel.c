@@ -63,7 +63,9 @@ int main(void)
 
 			int iter;
 			for (iter = 0; iter < ITER; ++iter) {
-				double mod = cabs(z);
+				double zx = creal(z);
+				double zy = cimag(z);
+				double mod = sqrt(zx*zx + zy*zy);
 
 				if (mod > TRSH)
 					break;
