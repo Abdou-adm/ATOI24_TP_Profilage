@@ -35,17 +35,17 @@ struct ppm_pixel getcol(double val, double max)
 	return c;
 }
 
-double cx(int x)
+float cx(int x)
 {
 	/* -2 ---> 1 */
-	static const double qx = 3.0 / (double)SIZEX;
+	static const float qx = 3.0 / (float)SIZEX;
 	return -2.0 + x * qx;
 }
 
-double cy(int y)
+float cy(int y)
 {
 	/* -1 ---> 1 */
-	static const double qy = 2.0 / (double)SIZEY;
+	static const float qy = 2.0 / (float)SIZEY;
 	return -1.0 + y * qy;
 }
 
@@ -58,12 +58,12 @@ int main(void)
 
 	for (int i = 0; i < SIZEX; ++i) {
 		for (int j = 0; j < SIZEY; ++j) {
-			double complex c = cx(i) + cy(j) * I;
-			double complex z = 0;
+			float complex c = cx(i) + cy(j) * I;
+			float complex z = 0;
 
 			int iter;
 			for (iter = 0; iter < ITER; ++iter) {
-				double mod = cabs(z);
+				float mod = cabsf(z);
 
 				if (mod > TRSH)
 					break;
