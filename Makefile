@@ -15,4 +15,4 @@ mandel: mandel.c libppm.so
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -lppm -L. -o $@ -lm
 
 clean:
-	rm -fr $(TARGET) *.so
+	rm -f $(TARGET) *.so
