@@ -9,6 +9,32 @@
 #define SIZEX 1620
 #define SIZEY 1080
 
+struct ppm_pixel getcol(double val, double max)
+{
+	struct ppm_pixel c = { 0, 0, 0 };
+
+	double q = val / max;
+	if (q < 0.25) {
+		c.r = (q * 4.0) * 255.0;
+		c.g = 0;
+		c.b = 255;
+	} else if (q < 0.5) {
+		c.r = (q - 0.25) * 4.0 * 255.0;
+		c.g = 255;
+		c.b = 255;
+	} else if (q < 0.75) {
+		c.r = 255;
+		c.g = 255 - (q - 0.5) * 4.0 * 255.0;
+		c.b = 255;
+	} else {
+		c.r = 255;
+		c.g = 0;
+		c.b = 255 - (q - 0.75) * 4.0 * 255.0;
+	}
+
+	return c;
+}
+
 double cx(int x)
 {
 	/* -2 ---> 1 */
@@ -45,8 +71,8 @@ int main(void)
 				z = z*z + c;
 			}
 
-			int grey = (int)(colref * log((double)iter));
-			ppm_image_setpixel(&im, i, j, grey, grey, grey);
+			struct ppm_pixel cc = getcol(log((double)iter), colref);
+			ppm_image_setpixel(&im, i, j, cc.r, cc.g, cc.b);
 		}
 	}
 
