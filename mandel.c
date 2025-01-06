@@ -65,9 +65,9 @@ int main(void)
 			for (iter = 0; iter < ITER; ++iter) {
 				double zx = creal(z);
 				double zy = cimag(z);
-				double mod = sqrt(zx*zx + zy*zy);
+				double modsq = zx*zx + zy*zy;
 
-				if (mod > TRSH)
+				if (modsq > TRSH*TRSH)
 					break;
 
 				z = z*z + c;
