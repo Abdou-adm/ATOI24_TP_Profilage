@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 				iter++;
 			}
 
-			int grey = colref * log(iter);
+			int grey = (int)(colref * log((double)iter));
 			ppm_image_setpixel(&im, i, j, grey, grey, grey);
 		}
 	}
