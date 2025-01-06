@@ -6,8 +6,8 @@
 #define TRSH 2.0
 #define ITER 1024
 
-#define SIZEX 1500
-#define SIZEY 1500
+#define SIZEX 1620
+#define SIZEY 1080
 
 double cx(int x)
 {
