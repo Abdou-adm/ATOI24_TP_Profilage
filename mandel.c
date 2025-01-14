@@ -65,9 +65,9 @@ int main(void)
 			for (iter = 0; iter < ITER; ++iter) {
 				float zx = crealf(z);
 				float zy = cimagf(z);
-				float mod = sqrtf(zx*zx + zy*zy);
+				float modsq = zx*zx + zy*zy;
 
-				if (mod > TRSH)
+				if (modsq > TRSH*TRSH)
 					break;
 
 				z = z*z + c;
