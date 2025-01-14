@@ -1,35 +1,52 @@
 #include <stdio.h>
 #include <complex.h>
 #include <math.h>
+#include <assert.h>
 #include "ppm.h"
 
 #define TRSH 2.0
 #define ITER 1024
 
-#define SIZEX 1620
-#define SIZEY 1080
+#define WIDTH  3.0
+#define HEIGHT 2.0
+
+#define ZOOM     400
+#define CENTERX -0.2190024822784844 // -0.5
+#define CENTERY -0.6964558799506655
+
+static const int SIZEY = 1080;
+static const int SIZEX = (int)(SIZEY * WIDTH / HEIGHT); // Preserve aspect ratio
 
 struct ppm_pixel getcol(double val, double max)
 {
 	struct ppm_pixel c = { 0, 0, 0 };
 
-	double q = val / max;
-	if (q < 0.25) {
-		c.r = (q * 4.0) * 255.0;
+	double q = val / 4.7;
+	q -= floor(q);
+	if (q < 1.0/6) {
+		c.r = q * 6.0 * 255.0;
 		c.g = 0;
 		c.b = 255;
-	} else if (q < 0.5) {
-		c.r = (q - 0.25) * 4.0 * 255.0;
+	} else if (q < 2.0/6) {
+		c.r = 255;
+		c.g = (q - 1.0/6) * 6.0 * 255.0;
+		c.b = 255;
+	} else if (q < 3.0/6) {
+		c.r = 255;
 		c.g = 255;
-		c.b = 255;
-	} else if (q < 0.75) {
+		c.b = 255 - (q - 2.0/6) * 6.0 * 255.0;
+	} else if (q < 4.0/6) {
 		c.r = 255;
-		c.g = 255 - (q - 0.5) * 4.0 * 255.0;
-		c.b = 255;
-	} else {
-		c.r = 255;
+		c.g = 255 - (q - 3.0/6) * 6.0 * 255.0;
+		c.b = 0;
+	} else if (q < 5.0/6) {
+		c.r = 255 - (q - 5.0/6) * 6.0 * 255.0;
 		c.g = 0;
-		c.b = 255 - (q - 0.75) * 4.0 * 255.0;
+		c.b = 0;
+	} else {
+		c.r = 0;
+		c.g = 0;
+		c.b = (q - 4.0/6) * 6.0 * 255.0;
 	}
 
 	return c;
@@ -38,15 +55,17 @@ struct ppm_pixel getcol(double val, double max)
 double cx(int x)
 {
 	/* -2 ---> 1 */
-	static const double qx = 3.0 / (double)SIZEX;
-	return -2.0 + x * qx;
+	static const double qx = WIDTH / ZOOM / (double)SIZEX;
+	static const double left = CENTERX - WIDTH / ZOOM /2;
+	return left + x * qx;
 }
 
 double cy(int y)
 {
 	/* -1 ---> 1 */
-	static const double qy = 2.0 / (double)SIZEY;
-	return -1.0 + y * qy;
+	static const double qy = HEIGHT / ZOOM / (double)SIZEY;
+	static const double top = CENTERY - HEIGHT / ZOOM /2;
+	return top + y * qy;
 }
 
 int main(void)
@@ -54,7 +73,7 @@ int main(void)
 	struct ppm_image im;
 	ppm_image_init(&im, SIZEX, SIZEY);
 
-	double colref = 255.0 / log(ITER);
+	double colref = log(ITER);
 
 	for (int i = 0; i < SIZEX; ++i) {
 		for (int j = 0; j < SIZEY; ++j) {
