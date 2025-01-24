@@ -1,0 +1,483 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles:P'
+# Event count (approx.): 11392874553
+#
+# Children      Self  Command  Shared Object      Symbol                              
+# ........  ........  .......  .................  ....................................
+#
+    99.86%     0.00%  mandel   libc.so.6          [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               |          
+               |--47.42%--main
+               |          |          
+               |          |--1.74%--asm_sysvec_apic_timer_interrupt
+               |          |          |          
+               |          |           --1.65%--sysvec_apic_timer_interrupt
+               |          |                     __sysvec_apic_timer_interrupt
+               |          |                     |          
+               |          |                      --1.61%--hrtimer_interrupt
+               |          |                                __hrtimer_run_queues
+               |          |                                tick_nohz_handler
+               |          |                                |          
+               |          |                                 --1.61%--update_process_times
+               |          |                                           |          
+               |          |                                            --1.61%--sched_tick
+               |          |                                                      perf_event_task_tick
+               |          |                                                      perf_adjust_freq_unthr_context
+               |          |                                                      |          
+               |          |                                                       --1.56%--amd_pmu_check_overflow
+               |          |                                                                 |          
+               |          |                                                                  --1.50%--amd_pmu_test_overflow_topbit
+               |          |                                                                            native_read_msr
+               |          |          
+               |           --0.64%--getcol
+               |          
+               |--45.20%--hypot@@GLIBC_2.35
+               |          |          
+               |           --1.79%--asm_sysvec_apic_timer_interrupt
+               |                     |          
+               |                      --1.50%--sysvec_apic_timer_interrupt
+               |                                |          
+               |                                 --1.49%--__sysvec_apic_timer_interrupt
+               |                                           |          
+               |                                            --1.48%--hrtimer_interrupt
+               |                                                      __hrtimer_run_queues
+               |                                                      tick_nohz_handler
+               |                                                      |          
+               |                                                       --1.47%--update_process_times
+               |                                                                 sched_tick
+               |                                                                 perf_event_task_tick
+               |                                                                 perf_adjust_freq_unthr_context
+               |                                                                 amd_pmu_check_overflow
+               |                                                                 |          
+               |                                                                  --1.41%--amd_pmu_test_overflow_topbit
+               |                                                                            native_read_msr
+               |          
+               |--4.76%--__muldc3
+               |          
+                --2.37%--__cabs
+
+    47.42%    44.82%  mandel   mandel             [.] main
+            |          
+            |--44.82%--__libc_start_call_main
+            |          main
+            |          
+             --2.60%--main
+                       |          
+                       |--1.74%--asm_sysvec_apic_timer_interrupt
+                       |          |          
+                       |           --1.65%--sysvec_apic_timer_interrupt
+                       |                     __sysvec_apic_timer_interrupt
+                       |                     |          
+                       |                      --1.61%--hrtimer_interrupt
+                       |                                __hrtimer_run_queues
+                       |                                tick_nohz_handler
+                       |                                |          
+                       |                                 --1.61%--update_process_times
+                       |                                           |          
+                       |                                            --1.61%--sched_tick
+                       |                                                      perf_event_task_tick
+                       |                                                      perf_adjust_freq_unthr_context
+                       |                                                      |          
+                       |                                                       --1.56%--amd_pmu_check_overflow
+                       |                                                                 |          
+                       |                                                                  --1.50%--amd_pmu_test_overflow_topbit
+                       |                                                                            native_read_msr
+                       |          
+                        --0.64%--getcol
+
+    45.20%    43.31%  mandel   libm.so.6          [.] hypot@@GLIBC_2.35
+            |          
+            |--43.31%--__libc_start_call_main
+            |          hypot@@GLIBC_2.35
+            |          
+             --1.89%--hypot@@GLIBC_2.35
+                       |          
+                        --1.79%--asm_sysvec_apic_timer_interrupt
+                                  |          
+                                   --1.50%--sysvec_apic_timer_interrupt
+                                             |          
+                                              --1.49%--__sysvec_apic_timer_interrupt
+                                                        |          
+                                                         --1.48%--hrtimer_interrupt
+                                                                   __hrtimer_run_queues
+                                                                   tick_nohz_handler
+                                                                   |          
+                                                                    --1.47%--update_process_times
+                                                                              sched_tick
+                                                                              perf_event_task_tick
+                                                                              perf_adjust_freq_unthr_context
+                                                                              amd_pmu_check_overflow
+                                                                              |          
+                                                                               --1.41%--amd_pmu_test_overflow_topbit
+                                                                                         native_read_msr
+
+     4.76%     4.56%  mandel   mandel             [.] __muldc3
+            |          
+             --4.56%--__libc_start_call_main
+                       __muldc3
+
+     3.87%     0.16%  mandel   [kernel.kallsyms]  [k] asm_sysvec_apic_timer_interrupt
+            |          
+             --3.71%--asm_sysvec_apic_timer_interrupt
+                       |          
+                        --3.44%--sysvec_apic_timer_interrupt
+                                  |          
+                                   --3.43%--__sysvec_apic_timer_interrupt
+                                             |          
+                                              --3.38%--hrtimer_interrupt
+                                                        __hrtimer_run_queues
+                                                        tick_nohz_handler
+                                                        |          
+                                                         --3.37%--update_process_times
+                                                                   |          
+                                                                    --3.37%--sched_tick
+                                                                              perf_event_task_tick
+                                                                              perf_adjust_freq_unthr_context
+                                                                              |          
+                                                                               --3.30%--amd_pmu_check_overflow
+                                                                                         |          
+                                                                                          --3.15%--amd_pmu_test_overflow_topbit
+                                                                                                    native_read_msr
+
+     3.56%     0.01%  mandel   [kernel.kallsyms]  [k] amd_pmu_check_overflow
+            |          
+             --3.55%--amd_pmu_check_overflow
+                       |          
+                        --3.38%--amd_pmu_test_overflow_topbit
+                                  native_read_msr
+
+     3.44%     0.00%  mandel   [kernel.kallsyms]  [k] sysvec_apic_timer_interrupt
+            |
+            ---sysvec_apic_timer_interrupt
+               |          
+                --3.43%--__sysvec_apic_timer_interrupt
+                          |          
+                           --3.38%--hrtimer_interrupt
+                                     __hrtimer_run_queues
+                                     tick_nohz_handler
+                                     |          
+                                      --3.37%--update_process_times
+                                                |          
+                                                 --3.37%--sched_tick
+                                                           perf_event_task_tick
+                                                           perf_adjust_freq_unthr_context
+                                                           |          
+                                                            --3.30%--amd_pmu_check_overflow
+                                                                      |          
+                                                                       --3.15%--amd_pmu_test_overflow_topbit
+                                                                                 native_read_msr
+
+     3.44%     3.44%  mandel   [kernel.kallsyms]  [k] native_read_msr
+            |          
+             --3.41%--__libc_start_call_main
+                       |          
+                       |--1.60%--hypot@@GLIBC_2.35
+                       |          |          
+                       |           --1.59%--asm_sysvec_apic_timer_interrupt
+                       |                     |          
+                       |                      --1.41%--sysvec_apic_timer_interrupt
+                       |                                __sysvec_apic_timer_interrupt
+                       |                                hrtimer_interrupt
+                       |                                __hrtimer_run_queues
+                       |                                tick_nohz_handler
+                       |                                update_process_times
+                       |                                sched_tick
+                       |                                perf_event_task_tick
+                       |                                perf_adjust_freq_unthr_context
+                       |                                amd_pmu_check_overflow
+                       |                                amd_pmu_test_overflow_topbit
+                       |                                native_read_msr
+                       |          
+                        --1.59%--main
+                                  |          
+                                   --1.56%--asm_sysvec_apic_timer_interrupt
+                                             |          
+                                              --1.52%--sysvec_apic_timer_interrupt
+                                                        __sysvec_apic_timer_interrupt
+                                                        hrtimer_interrupt
+                                                        __hrtimer_run_queues
+                                                        tick_nohz_handler
+                                                        update_process_times
+                                                        sched_tick
+                                                        perf_event_task_tick
+                                                        perf_adjust_freq_unthr_context
+                                                        |          
+                                                         --1.50%--amd_pmu_check_overflow
+                                                                   amd_pmu_test_overflow_topbit
+                                                                   native_read_msr
+
+     3.43%     0.00%  mandel   [kernel.kallsyms]  [k] __sysvec_apic_timer_interrupt
+            |
+            ---__sysvec_apic_timer_interrupt
+               |          
+                --3.38%--hrtimer_interrupt
+                          __hrtimer_run_queues
+                          tick_nohz_handler
+                          |          
+                           --3.37%--update_process_times
+                                     |          
+                                      --3.37%--sched_tick
+                                                perf_event_task_tick
+                                                perf_adjust_freq_unthr_context
+                                                |          
+                                                 --3.30%--amd_pmu_check_overflow
+                                                           |          
+                                                            --3.15%--amd_pmu_test_overflow_topbit
+                                                                      native_read_msr
+
+     3.42%     0.00%  mandel   [kernel.kallsyms]  [k] amd_pmu_test_overflow_topbit
+            |
+            ---amd_pmu_test_overflow_topbit
+               native_read_msr
+
+     3.38%     0.00%  mandel   [kernel.kallsyms]  [k] hrtimer_interrupt
+            |
+            ---hrtimer_interrupt
+               __hrtimer_run_queues
+               tick_nohz_handler
+               |          
+                --3.37%--update_process_times
+                          |          
+                           --3.37%--sched_tick
+                                     perf_event_task_tick
+                                     perf_adjust_freq_unthr_context
+                                     |          
+                                      --3.30%--amd_pmu_check_overflow
+                                                |          
+                                                 --3.15%--amd_pmu_test_overflow_topbit
+                                                           native_read_msr
+
+     3.38%     0.00%  mandel   [kernel.kallsyms]  [k] __hrtimer_run_queues
+            |
+            ---__hrtimer_run_queues
+               tick_nohz_handler
+               |          
+                --3.37%--update_process_times
+                          |          
+                           --3.37%--sched_tick
+                                     perf_event_task_tick
+                                     perf_adjust_freq_unthr_context
+                                     |          
+                                      --3.30%--amd_pmu_check_overflow
+                                                |          
+                                                 --3.15%--amd_pmu_test_overflow_topbit
+                                                           native_read_msr
+
+     3.38%     0.00%  mandel   [kernel.kallsyms]  [k] tick_nohz_handler
+            |
+            ---tick_nohz_handler
+               |          
+                --3.37%--update_process_times
+                          |          
+                           --3.37%--sched_tick
+                                     perf_event_task_tick
+                                     perf_adjust_freq_unthr_context
+                                     |          
+                                      --3.30%--amd_pmu_check_overflow
+                                                |          
+                                                 --3.15%--amd_pmu_test_overflow_topbit
+                                                           native_read_msr
+
+     3.37%     0.00%  mandel   [kernel.kallsyms]  [k] update_process_times
+            |
+            ---update_process_times
+               |          
+                --3.37%--sched_tick
+                          perf_event_task_tick
+                          perf_adjust_freq_unthr_context
+                          |          
+                           --3.30%--amd_pmu_check_overflow
+                                     |          
+                                      --3.15%--amd_pmu_test_overflow_topbit
+                                                native_read_msr
+
+     3.37%     0.00%  mandel   [kernel.kallsyms]  [k] sched_tick
+            |
+            ---sched_tick
+               perf_event_task_tick
+               perf_adjust_freq_unthr_context
+               |          
+                --3.30%--amd_pmu_check_overflow
+                          |          
+                           --3.15%--amd_pmu_test_overflow_topbit
+                                     native_read_msr
+
+     3.37%     0.00%  mandel   [kernel.kallsyms]  [k] perf_event_task_tick
+            |
+            ---perf_event_task_tick
+               perf_adjust_freq_unthr_context
+               |          
+                --3.30%--amd_pmu_check_overflow
+                          |          
+                           --3.15%--amd_pmu_test_overflow_topbit
+                                     native_read_msr
+
+     3.37%     0.00%  mandel   [kernel.kallsyms]  [k] perf_adjust_freq_unthr_context
+            |
+            ---perf_adjust_freq_unthr_context
+               |          
+                --3.30%--amd_pmu_check_overflow
+                          |          
+                           --3.15%--amd_pmu_test_overflow_topbit
+                                     native_read_msr
+
+     2.37%     2.25%  mandel   libm.so.6          [.] __cabs
+            |          
+             --2.25%--__libc_start_call_main
+                       __cabs
+
+     0.64%     0.61%  mandel   mandel             [.] getcol
+            |          
+             --0.61%--__libc_start_call_main
+                       main
+                       getcol
+
+     0.28%     0.00%  mandel   [kernel.kallsyms]  [k] irqentry_exit_to_user_mode
+     0.27%     0.00%  mandel   [kernel.kallsyms]  [k] schedule
+     0.27%     0.00%  mandel   [kernel.kallsyms]  [k] __schedule
+     0.27%     0.00%  mandel   [kernel.kallsyms]  [k] __perf_event_task_sched_out
+     0.27%     0.00%  mandel   [kernel.kallsyms]  [k] perf_ctx_disable
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] asm_common_interrupt
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] common_interrupt
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] __common_interrupt
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] handle_edge_irq
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] handle_irq_event
+     0.19%     0.00%  mandel   [kernel.kallsyms]  [k] __handle_irq_event_percpu
+     0.19%     0.09%  mandel   [kernel.kallsyms]  [k] i8042_interrupt
+     0.18%     0.18%  mandel   [kernel.kallsyms]  [k] delay_tsc
+     0.14%     0.00%  mandel   [kernel.kallsyms]  [k] entry_SYSCALL_64_after_hwframe
+     0.14%     0.00%  mandel   [kernel.kallsyms]  [k] do_syscall_64
+     0.10%     0.00%  mandel   [kernel.kallsyms]  [k] serio_interrupt
+     0.10%     0.00%  mandel   [kernel.kallsyms]  [k] ps2_interrupt
+     0.10%     0.00%  mandel   [psmouse]          [k] psmouse_handle_byte
+     0.10%     0.06%  mandel   [psmouse]          [k] vmmouse_process_byte
+     0.09%     0.09%  mandel   libm.so.6          [.] __ieee754_log_fma
+     0.07%     0.00%  mandel   [unknown]          [k] 0000000000000000
+     0.07%     0.00%  mandel   libc.so.6          [.] __close_nocancel
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] __x64_sys_close
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] __fput
+     0.07%     0.00%  mandel   [ext4]             [k] ext4_release_file
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] __filemap_fdatawrite_range
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] filemap_fdatawrite_wbc
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] do_writepages
+     0.07%     0.00%  mandel   [ext4]             [k] ext4_writepages
+     0.07%     0.00%  mandel   [ext4]             [k] ext4_do_writepages
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] x86_pmu_stop
+     0.07%     0.00%  mandel   [kernel.kallsyms]  [k] amd_pmu_disable_event
+     0.07%     0.06%  mandel   mandel             [.] ppm_setpixel
+     0.07%     0.00%  mandel   mandel             [.] ppm_image_setpixel
+     0.06%     0.00%  mandel   [kernel.kallsyms]  [k] perf_adjust_freq_unthr_events
+     0.06%     0.00%  mandel   [unknown]          [k] 0xff0013ff0013ff00
+     0.06%     0.00%  mandel   libc.so.6          [.] __GI___libc_write
+     0.06%     0.00%  mandel   [kernel.kallsyms]  [k] ksys_write
+     0.06%     0.00%  mandel   [kernel.kallsyms]  [k] vfs_write
+     0.06%     0.00%  mandel   [ext4]             [k] ext4_buffered_write_iter
+     0.06%     0.00%  mandel   [kernel.kallsyms]  [k] generic_perform_write
+     0.06%     0.06%  mandel   [kernel.kallsyms]  [k] native_write_msr
+     0.05%     0.05%  mandel   [kernel.kallsyms]  [k] native_apic_msr_eoi
+     0.05%     0.01%  mandel   [ext4]             [k] ext4_bio_write_folio
+     0.05%     0.00%  mandel   [ext4]             [k] mpage_map_and_submit_buffers
+     0.05%     0.00%  mandel   [ext4]             [k] mpage_submit_folio
+     0.04%     0.00%  mandel   [ext4]             [k] ext4_da_write_begin
+     0.04%     0.04%  mandel   [kernel.kallsyms]  [k] __irqentry_text_start
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] x2apic_send_IPI
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] input_event
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] input_event_dispose
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] input_pass_values
+     0.04%     0.00%  mandel   [evdev]            [k] evdev_events
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] __wake_up
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] __wake_up_common
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] ep_poll_callback
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] ep_autoremove_wake_function
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] try_to_wake_up
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] ttwu_queue_wakelist
+     0.04%     0.01%  mandel   [kernel.kallsyms]  [k] srso_alias_return_thunk
+     0.04%     0.01%  mandel   [mptscsih]         [k] mptscsih_qcmd
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] blk_mq_flush_plug_list.part.0
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] blk_mq_run_hw_queue
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] blk_mq_sched_dispatch_requests
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] __blk_mq_sched_dispatch_requests
+     0.04%     0.00%  mandel   [kernel.kallsyms]  [k] blk_mq_dispatch_rq_list
+     0.04%     0.00%  mandel   [scsi_mod]         [k] scsi_queue_rq
+     0.03%     0.03%  mandel   mandel             [.] cx
+     0.03%     0.03%  mandel   [kernel.kallsyms]  [k] clear_page_erms
+     0.03%     0.00%  mandel   [kernel.kallsyms]  [k] __filemap_get_folio
+     0.03%     0.00%  mandel   [kernel.kallsyms]  [k] folio_alloc_noprof
+     0.03%     0.00%  mandel   [kernel.kallsyms]  [k] alloc_pages_mpol_noprof
+     0.03%     0.00%  mandel   [kernel.kallsyms]  [k] __alloc_pages_noprof
+     0.03%     0.00%  mandel   [kernel.kallsyms]  [k] get_page_from_freelist
+     0.02%     0.01%  mandel   [kernel.kallsyms]  [k] __lruvec_stat_mod_folio
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] __folio_start_writeback
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] lruvec_stat_mod_folio
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] submit_bio_noacct_nocheck
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] __submit_bio
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] blk_mq_submit_bio
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] blk_add_rq_to_plug
+     0.02%     0.02%  mandel   [mptbase]          [k] mpt_put_msg_frame
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] asm_sysvec_call_function_single
+     0.02%     0.02%  mandel   [kernel.kallsyms]  [k] srso_alias_safe_ret
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] amd_pmu_disable_all
+     0.02%     0.00%  mandel   [kernel.kallsyms]  [k] x86_pmu_disable_all
+     0.01%     0.00%  mandel   [ext4]             [k] ext4_block_write_begin
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] create_empty_buffers
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] copy_page_from_iter_atomic
+     0.01%     0.00%  mandel   [ext4]             [k] ext4_io_submit
+     0.01%     0.01%  mandel   [kernel.kallsyms]  [k] __mod_memcg_lruvec_state
+     0.01%     0.01%  mandel   [kernel.kallsyms]  [k] timekeeping_advance
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] update_wall_time
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] blk_finish_plug
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] __blk_flush_plug
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] error_entry
+     0.01%     0.01%  mandel   [kernel.kallsyms]  [k] task_mm_cid_work
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] task_work_run
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] x64_sys_call
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] __x64_sys_exit_group
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] do_group_exit
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] do_exit
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] perf_event_exit_task
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] ctx_sched_out
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] __pmu_ctx_sched_out
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] group_sched_out
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] event_sched_out
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] x86_pmu_del
+     0.01%     0.01%  mandel   [kernel.kallsyms]  [k] native_queued_spin_lock_slowpath
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] sysvec_call_function_single
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] __sysvec_call_function_single
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] __flush_smp_call_function_queue
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] sched_ttwu_pending
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] _raw_spin_rq_lock_irqsave
+     0.01%     0.00%  mandel   [kernel.kallsyms]  [k] _raw_spin_lock
+     0.01%     0.01%  mandel   mandel             [.] cy
+     0.01%     0.01%  mandel   [kernel.kallsyms]  [k] __irqentry_text_end
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] smp_call_function_single_async
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] generic_exec_single
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] run_posix_cpu_timers
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] finish_task_switch.isra.0
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] __perf_event_task_sched_in
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] perf_ctx_enable
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] amd_pmu_enable_all
+     0.00%     0.00%  mandel   [kernel.kallsyms]  [k] x86_pmu_enable_event
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] native_write_msr
+     0.00%     0.00%  perf-ex  [unknown]          [k] 0x00007f8bb44ea817
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] entry_SYSCALL_64_after_hwframe
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] do_syscall_64
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] __x64_sys_execve
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] do_execveat_common.isra.0
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] bprm_execve
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] load_elf_binary
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] begin_new_exec
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] perf_event_exec
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] perf_ctx_enable
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] amd_pmu_enable_all
+     0.00%     0.00%  perf-ex  [kernel.kallsyms]  [k] x86_pmu_enable_event
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#
